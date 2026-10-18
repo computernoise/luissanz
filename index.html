@@ -523,6 +523,35 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .record-item {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .record-cover {
+      display: block;
+      width: 88px;
+      aspect-ratio: 1;
+    }
+
+    .record-cover img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .text-item .record-meta {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .text-item .record-description {
+      margin-bottom: 0;
+    }
+
     .text-item h3 a {
       text-decoration: none;
     }
@@ -626,6 +655,15 @@
       .project-row {
         grid-template-columns: 1fr auto;
         gap: 7px 18px;
+      }
+
+      .record-item {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .record-cover {
+        width: 72px;
       }
 
       .project-row h3 {
@@ -929,9 +967,29 @@
         <div>
           <h2>Records</h2>
           <div class="text-list">
-            <article class="text-item">
-              <h3>Additive Glue</h3>
-              <p>Track on LOLTRAX002, LOL Editions, 2025 <span class="muted">· Listen link to be added</span></p>
+            <article class="text-item record-item">
+              <a class="record-cover" href="https://loleditions.bandcamp.com/album/loltrax002" target="_blank" rel="noopener noreferrer" aria-label="Listen to Various – LOLTRAX002 on Bandcamp">
+                <img src="images/loltrax002.jpg" alt="LOLTRAX002 album cover">
+              </a>
+              <div>
+                <h3>Various – LOLTRAX002</h3>
+                <p class="record-meta">2025 — loleditions [LOL002]</p>
+                <p class="record-description"><em>LOLTRAX002</em> is an experimental computer music compilation
+                  released by LOL Editions, featuring 11 artists exploring feedback, speech synthesis, digital
+                  oscillations, and additive sound processes.</p>
+              </div>
+            </article>
+            <article class="text-item record-item">
+              <a class="record-cover" href="https://buhrecords.bandcamp.com/album/interactions-a-guide-to-swiss-underground-experimental-music" target="_blank" rel="noopener noreferrer" aria-label="Listen to Interactions on Bandcamp">
+                <img src="images/Interactions.jpg" alt="Interactions: A Guide to Swiss Underground Experimental Music cover">
+              </a>
+              <div>
+                <h3>Various – Interactions (A Guide to Swiss Underground Experimental Music)</h3>
+                <p class="record-meta">2019 - buh records [BR120]</p>
+                <p class="record-description"><em>Interactions: A Guide to Swiss Underground Experimental Music</em>
+                  is a double compilation curated by Luis Alvarado and released by Buh Records, featuring 27 works
+                  by over 30 artists from Switzerland’s experimental music scene.</p>
+              </div>
             </article>
           </div>
         </div>
