@@ -215,6 +215,34 @@ p {
   margin: 0;
 }
 
+.member-list {
+  border-top: 1px solid var(--line);
+  margin: 28px 0;
+}
+
+.member {
+  display: grid;
+  grid-template-columns: minmax(160px, .8fr) minmax(0, 2fr);
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+
+.member h3 {
+  margin: 0;
+}
+
+.member h3 a {
+  text-decoration: none;
+}
+
+.member p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
 footer {
   padding: 34px 0 44px;
   font-size: 11px;
@@ -285,6 +313,11 @@ footer {
   .archive-row {
     grid-template-columns: 1fr;
     gap: 5px;
+  }
+
+  .member {
+    grid-template-columns: 1fr;
+    gap: 7px;
   }
 
   .footer-columns {
