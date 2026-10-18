@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Performing Code — artistic research into live coding, algorithmic composition, rhythm, and performative contemporary practices by Luis Sanz.">
-  <title>Performing Code — Luis Sanz</title>
+    content="Luis Sanz is a Zürich-based multidisciplinary artist, researcher, and musician working across computer music, experimental sonics, live coding, and audiovisual performance.">
+  <title>Luis Sanz — Artist, Researcher, Musician</title>
   <style>
     @font-face {
       font-family: "Space Grotesk";
@@ -418,6 +418,90 @@
       font-size: 11px;
     }
 
+    .event-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 76px 105px minmax(150px, 1fr) minmax(150px, 1fr) 110px;
+      gap: 18px;
+      align-items: baseline;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+    }
+
+    .event-date,
+    .event-type,
+    .event-venue {
+      color: var(--muted);
+    }
+
+    .event-type,
+    .event-link {
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .event-link {
+      color: var(--accent);
+    }
+
+    .project-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: minmax(160px, .8fr) minmax(0, 2fr) 75px;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .project-row h3 {
+      margin: 0;
+    }
+
+    .project-row p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .project-year {
+      color: var(--muted);
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .text-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .text-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .text-item h3 a {
+      text-decoration: none;
+    }
+
+    .text-item p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .profile-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
     footer {
       padding: 34px 0 44px;
       font-size: 11px;
@@ -429,6 +513,26 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
+    }
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+
+    .footer-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-size: 10px;
+    }
+
+    .footer-columns p {
+      margin: 0;
     }
 
     @media (max-width: 700px) {
@@ -471,6 +575,47 @@
         gap: 5px;
       }
 
+      .event-row {
+        grid-template-columns: 72px 1fr;
+        gap: 5px 16px;
+      }
+
+      .event-row > :nth-child(3) {
+        grid-column: 2;
+      }
+
+      .event-row > :nth-child(4) {
+        grid-column: 2;
+      }
+
+      .event-row > :nth-child(5) {
+        grid-column: 2;
+      }
+
+      .project-row {
+        grid-template-columns: 1fr auto;
+        gap: 7px 18px;
+      }
+
+      .project-row h3 {
+        grid-column: 1;
+      }
+
+      .project-row p {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+
+      .project-year {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
       .hero-meta {
         gap: 22px;
       }
@@ -487,287 +632,145 @@
 <body>
   <header>
     <div class="wrap topbar">
-      <a class="brand" href="#top">Performing Code / Luis Sanz</a>
+      <a class="brand" href="#top">Luis Sanz</a>
       <nav aria-label="Main navigation">
+        <a href="#projects">Projects and collaborations</a>
         <a href="#research">Research</a>
-        <a href="#experiments">Experiments</a>
-        <a href="#methods">Methods</a>
-        <a href="#archive">Archive</a>
-        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#profile">Profile</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero">
+    <section class="hero" id="bio">
       <div class="wrap">
-        <div class="eyebrow">Artistic research / 2026</div>
-        <h1>Performing Code</h1>
-        <p class="subtitle">Live Coding in Performative Contemporary Practices</p>
-        <p class="muted" style="max-width:650px;margin-top:22px">
-          An ongoing investigation into code as compositional material, a performative instrument,
-          and a means of exploring emergent sonic structures.
+        <div class="eyebrow">Artist / Researcher / Musician</div>
+        <h1>Luis Sanz</h1>
+        <p class="subtitle">
+          Luis Sanz is a Zürich-based multidisciplinary artist, researcher, and musician working across
+          computer music, experimental sonics, live coding, and audiovisual performance. His practice
+          explores self-developed computational systems, autonomous sonic behaviours, rhythm, perception,
+          and cultural memory.
         </p>
-        <div class="hero-meta">
-          <div><strong>Research period</strong><span>15 June — 17 August 2026</span></div>
-          <div><strong>Location</strong><span>Unsorted Space, Zürich</span></div>
-          <div><strong>Researcher</strong><span>Luis Sanz</span></div>
+        <p class="muted" style="max-width:760px;margin-top:22px">
+          He is part of unsorted in Zurich, a platform for experimental and computational practices. His
+          work has been presented at Berlin Atonal, CTM Festival, Localhost Festival, Sonorities,
+          A Bunch of Noise, and Proyecto AMIL, alongside touring and artistic research across Asia.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="recent">
+      <div class="wrap section-grid">
+        <div class="section-label">Recent</div>
+        <div>
+          <h2>Upcoming performances and installations</h2>
+          <div class="event-list">
+            <div class="event-row">
+              <span class="event-date">29 / 10</span>
+              <span class="event-type">Installation</span>
+              <span>unsorted echoes</span>
+              <span class="event-venue">Echolot Festival, Luzern</span>
+              <span class="event-link" aria-label="External link to be added">External link ↗</span>
+            </div>
+            <div class="event-row">
+              <span class="event-date">26 / 10</span>
+              <span class="event-type">Perform</span>
+              <span>Solo laptop — live</span>
+              <span class="event-venue">Live Video Festival, Basel</span>
+              <span class="event-link" aria-label="External link to be added">External link ↗</span>
+            </div>
+          </div>
+          <p class="links"><a href="archive.html">Archive of past performances and installations ↗</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="wrap section-grid">
+        <div class="section-label">Projects and collaborations</div>
+        <div>
+          <h2>Selected projects and collaborations</h2>
+          <div class="project-list">
+            <article class="project-row">
+              <h3><a href="project-unsorted.html">Unsorted</a></h3>
+              <p>Unsorted is an audiovisual collective dedicated to the exploration of open-source systems and digital
+                sovereignty. Their practice focuses on the friction between technology and artistic expression,
+                utilizing custom tools to develop new methodologies in computer music and graphics.</p>
+              <span class="project-year">2025 –</span>
+            </article>
+            <article class="project-row">
+              <h3><a href="project-noijzu.html">Noijzu</a></h3>
+              <p>Noijzu is a Swiss experimental unit formed by Miao Zhao and Luis Sanz. The duo focuses on acoustic
+                sounds and computer-generated sonic entities.</p>
+              <span class="project-year">2025</span>
+            </article>
+            <article class="project-row">
+              <h3><a href="project-postscriptum-observatory.html">The Postscriptum Observatory</a></h3>
+              <p>A listening space dedicated to what lingers after the fact. In collaboration with the Echoes of
+                Authority festival, the project shifts focus toward the margins: notes, private reflections, and
+                delayed voices that rework democratic life from below.</p>
+              <span class="project-year"></span>
+            </article>
+            <article class="project-row">
+              <h3><a href="project-mujica-sanz.html">Mujica/Sanz</a></h3>
+              <p>Peruvian-Swiss duo Mujica-Sanz explores Andean and Alpine sonic imaginaries by mixing global and local
+                cultural elements through sound collages that resemble Peruvian and Swiss soundscapes, as soundtrack
+                interventions through live music.</p>
+              <span class="project-year">2021</span>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="research">
       <div class="wrap section-grid">
-        <div class="section-label">01 / Research</div>
+        <div class="section-label">Research</div>
         <div>
-          <h2>Code as an instrument of thought and action.</h2>
-          <p class="lead">
-            Performing Code explores live coding as a compositional, performative, and computational practice.
-            It asks how algorithmic systems can shape musical expression, rhythmic organization, and the
-            experience of performing with computational processes in real time.
-          </p>
-          <p>
-            The research develops through practical experiments, source-code studies, listening, and performance.
-            Code is approached not only as a set of instructions for producing sound, but as material that can
-            be revised, exposed, and negotiated during a performance.
-          </p>
-          <p>
-            Rather than aiming for predetermined outcomes, the work examines how rules, constraints, and
-            relationships between processes can produce unexpected sonic behaviours and evolving structures.
-          </p>
-          <div class="note">
-            The archive combines working code, short explanations, research notes, and documentation.
-            It is intended to grow alongside the experiments rather than present a finished methodology.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap section-grid">
-        <div class="section-label">02 / Questions</div>
-        <div>
-          <h2>Areas of investigation</h2>
-          <div class="research-list">
-            <article class="research-item">
-              <div class="num">01</div>
-              <div>
-                <h3>Rhythm and relation</h3>
-                <p>How can algorithmic relationships generate rhythmic structures beyond fixed loops, regular pulses, or
-                  conventional meter?</p>
-              </div>
+          <h2>Selected research</h2>
+          <div class="text-list">
+            <article class="text-item">
+              <h3><a href="research-live-coding.html">Live Coding in Performative Contemporary Practices</a></h3>
+              <p>An ongoing investigation into code as compositional material, a performative instrument, and a means
+                of exploring emergent sonic structures.</p>
             </article>
-            <article class="research-item">
-              <div class="num">02</div>
-              <div>
-                <h3>Generative systems</h3>
-                <p>How do operators, constraints, transformations, and feedback shape the behaviour of a musical system
-                  over time?</p>
-              </div>
+            <article class="text-item">
+              <h3><a href="research-performing-code.html">Performing Code: Rhythm Generation and Structure in Computer Music</a></h3>
+              <p>In this series of solo laptop performances, Luis Sanz explores digital synthesis through algorithmic
+                systems based on controlled randomness and integer-based sieve techniques. Developed in SuperCollider,
+                the system combines evolving rules with real-time performer interaction to shape sound, musical
+                structure, and rhythmic patterns.</p>
             </article>
-            <article class="research-item">
-              <div class="num">03</div>
-              <div>
-                <h3>Code in performance</h3>
-                <p>What changes when the code itself becomes visible, mutable material within the performance?</p>
-              </div>
-            </article>
-            <article class="research-item">
-              <div class="num">04</div>
-              <div>
-                <h3>Listening and emergence</h3>
-                <p>How can listening and bodily response guide the development of systems whose results are not fully
-                  predictable?</p>
-              </div>
-            </article>
-            <article class="research-item">
-              <div class="num">05</div>
-              <div>
-                <h3>Open tools and access</h3>
-                <p>How can open-source environments support adaptable, inspectable, and shareable approaches to creative
-                  computation?</p>
-              </div>
+            <article class="text-item">
+              <h3><a href="research-unlocated-objects.html">Synthesis For Unlocated Objects</a></h3>
+              <p>Developed specifically for the exhibition space, this immersive sound installation focuses on the
+                connections between sound objects, perception, and space.</p>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="experiments">
+    <section class="section" id="publications">
       <div class="wrap section-grid">
-        <div class="section-label">03 / Experiments</div>
+        <div class="section-label">Publications</div>
         <div>
-          <h2>Code notes</h2>
-          <p class="muted">
-            Short, annotated examples can sit alongside longer research texts. The example below is a small
-            SuperCollider pattern sketch; replace it with a tested excerpt from your own work and explain what
-            you are listening for.
-          </p>
-
-          <article class="entry">
-            <div class="entry-head">
-              <h3>01 — Pattern as a changing relation</h3>
-              <span class="tag">SuperCollider / sketch</span>
-            </div>
-            <p>
-              A simple pattern provides a stable starting point. Changing the sequence, duration, or relationship
-              between pattern streams can shift the resulting rhythmic behaviour without changing the sound source.
-            </p>
-            <div class="codebox">
-              <div class="codehead"><span>SuperCollider</span><button class="copy" type="button">Copy code</button>
-              </div>
-              <pre><code>(
-Pbind(
-    \instrument, \default,
-    \degree, Pseq([0, 2, 5, 1, 4], inf),
-    \dur, Pseq([0.25, 0.5, 0.25, 0.75], inf),
-    \amp, 0.15
-).play;
-)</code></pre>
-            </div>
-            <p class="muted">Research note: What happens to perceived pulse when the pitch sequence and duration
-              sequence have different cycle lengths?</p>
-          </article>
-
-          <article class="entry">
-            <div class="entry-head">
-              <h3>02 — Documenting an operator</h3>
-              <span class="tag">Template / replace with tested code</span>
-            </div>
-            <p>
-              Use this structure to document a custom operator, generator, or transformation. State the input,
-              the operation it performs, and what changed in the listening test.
-            </p>
-            <div class="codebox">
-              <div class="codehead"><span>Code example placeholder</span><button class="copy" type="button">Copy
-                  code</button></div>
-              <pre><code>// Name:
-// Input:
-// Operation:
-// Output:
-//
-// Example call:
-// [insert tested expression here]</code></pre>
-            </div>
-            <p class="muted">Keep examples executable where possible. Mark pseudocode and untested sketches clearly.</p>
-          </article>
-
-          <div class="note">
-            These examples are illustrative page content, not a complete performance setup. A real patch may
-            require a SynthDef, server boot, external classes, buffers, or other dependencies.
+          <h2>Records</h2>
+          <div class="text-list">
+            <article class="text-item">
+              <h3>Additive Glue</h3>
+              <p>Track on LOLTRAX002, LOL Editions, 2025 <span class="muted">· Listen link to be added</span></p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="methods">
+    <section class="section" id="profile">
       <div class="wrap section-grid">
-        <div class="section-label">04 / Methods</div>
-        <div>
-          <h2>From code to listening, and back.</h2>
-          <div class="columns">
-            <div class="small-card">
-              <h3>Build</h3>
-              <p>Develop small systems, operators, and patterns that can be inspected and recombined.</p>
-            </div>
-            <div class="small-card">
-              <h3>Listen</h3>
-              <p>Evaluate their sonic and rhythmic behaviour through repeated listening and performance.</p>
-            </div>
-            <div class="small-card">
-              <h3>Modify</h3>
-              <p>Adjust rules, parameters, and relationships in response to what the system produces.</p>
-            </div>
-            <div class="small-card">
-              <h3>Document</h3>
-              <p>Publish code, observations, limitations, and useful references so each experiment remains traceable.
-              </p>
-            </div>
-          </div>
-          <p style="margin-top:26px">
-            The method is iterative rather than linear. Listening can challenge the assumptions behind a system;
-            code can then be revised to make room for different forms of interaction, instability, and control.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="archive">
-      <div class="wrap section-grid">
-        <div class="section-label">05 / Archive</div>
-        <div>
-          <h2>Research log</h2>
-          <p class="muted">Add dated entries as the project develops. Link each entry to a separate page, code file,
-            audio example, or video when available.</p>
-          <div class="archive-row">
-            <div class="archive-date">Entry 001 / 2026</div>
-            <div>
-              <h3>Algorithmic operators and rhythmic relations</h3>
-              <p class="muted">Notes on transformations, cyclic structures, and the relationship between mathematical
-                operations and physical listening.</p>
-            </div>
-          </div>
-          <div class="archive-row">
-            <div class="archive-date">Entry 002 / 2026</div>
-            <div>
-              <h3>Building a performance setup</h3>
-              <p class="muted">Environment, routing, pattern organization, and practical decisions that shape a
-                live-coding session.</p>
-            </div>
-          </div>
-          <div class="archive-row">
-            <div class="archive-date">Entry 003 / To come</div>
-            <div>
-              <h3>Performance documentation</h3>
-              <p class="muted">Add recordings, excerpts, images, and reflections from a specific performance or
-                experiment.</p>
-            </div>
-          </div>
-          <p class="muted" style="font-size:12px;margin-top:24px">The entries above are starter placeholders. Replace
-            them with actual research notes as you publish them.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap section-grid">
-        <div class="section-label">06 / Tools</div>
-        <div>
-          <h2>Working environments</h2>
-          <p>
-            <a href="https://supercollider.github.io/">SuperCollider</a> is the primary environment for this research,
-            used to develop and perform algorithmic music and investigate code as a compositional instrument. The work
-            explores real-time rhythmic structures, algorithmic processes, and the interaction between performer and
-            system.
-          </p>
-          <div class="links">
-            <a href="https://github.com/computernoise/performing-code">Project source repository ↗</a>
-            <a href="https://computernoise.github.io/">Project website ↗</a>
-            <a href="https://luissanz.ch/">Luis Sanz ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="support">
-      <div class="wrap section-grid">
-        <div class="section-label">07 / Research Support</div>
-        <div>
-          <h2>Research support</h2>
-          <p>
-            Performing Code — Live Coding in Performative Contemporary
-            Practices was supported by Pro Helvetia, the Swiss Arts Council.
-          </p>
-          <div class="support-logo">
-            <img src="./images/pro-helvetia.png" alt="Pro Helvetia — Swiss Arts Council" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="wrap section-grid">
-        <div class="section-label">08 / About</div>
+        <div class="section-label">Profile</div>
         <div>
           <h2>Luis Sanz</h2>
           <p>
@@ -775,37 +778,49 @@ Pbind(
             computer music, experimental sonics, live coding, and audiovisual performance. His practice explores
             self-developed computational systems, autonomous sonic behaviours, rhythm, perception, and cultural memory.
           </p>
-          <p class="muted">Performing Code — Live Coding in Performative Contemporary Practices<br>
-            Unsorted Space, Zürich · 15 June – 17 August 2026</p>
+          <p>
+            He is part of unsorted in Zurich, a platform for experimental and computational practices. His work has
+            been presented at Berlin Atonal, CTM Festival, Localhost Festival, Sonorities, A Bunch of Noise, and
+            Proyecto AMIL, alongside touring and artistic research across Asia.
+          </p>
+          <h2 style="margin-top:34px">Short CV</h2>
+          <p>
+            Selected presentations include Berlin Atonal, CTM Festival, Localhost Festival, Sonorities,
+            A Bunch of Noise, and Proyecto AMIL. Luis is part of unsorted, a Zürich-based platform for
+            experimental and computational practices.
+          </p>
+          <div class="profile-note">Profile image to be added.</div>
+          <div class="links">
+            <a href="mailto:hello@luissanz.ch">Contact Luis Sanz ↗</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap footer-inner">
-      <span>© Luis Sanz · Performing Code</span>
-      <span>Artistic research / source code / documentation</span>
-      <a href="#top">Back to top ↑</a>
+    <div class="wrap">
+      <div class="footer-columns">
+        <div>
+          <span class="footer-label">Contact</span>
+          <p><a href="mailto:hello@luissanz.ch">hello@luissanz.ch</a></p>
+        </div>
+        <div>
+          <span class="footer-label">Elsewhere</span>
+          <p><a href="https://github.com/computernoise">GitHub ↗</a><br>
+            <a href="https://www.instagram.com/luissanz___">Instagram ↗</a></p>
+        </div>
+        <div>
+          <span class="footer-label">Luis Sanz</span>
+          <p>© Luis Sanz · 2026</p>
+        </div>
+      </div>
+      <div class="footer-inner">
+        <span>Artist / Researcher / Musician</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
     </div>
   </footer>
-
-  <script>
-    document.querySelectorAll(".copy").forEach((button) => {
-      button.addEventListener("click", async () => {
-        const code = button.closest(".codebox").querySelector("code").innerText;
-        const original = button.textContent;
-        try {
-          await navigator.clipboard.writeText(code);
-          button.textContent = "Copied";
-          setTimeout(() => button.textContent = original, 1400);
-        } catch (error) {
-          button.textContent = "Select code to copy";
-          setTimeout(() => button.textContent = original, 1800);
-        }
-      });
-    });
-  </script>
 </body>
 
 </html>
