@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Performing Code — artistic research into live coding, algorithmic composition, rhythm, and performative contemporary practices by Luis Sanz.">
+  <title>Performing Code — Luis Sanz</title>
+  <style>
+    @font-face {
+      font-family: "Space Grotesk";
+      src: url("fonts/SpaceGrotesk[wght].ttf") format("truetype");
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Fira Code";
+      src: url("fonts/FiraCode-Light.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Fira Code";
+      src: url("fonts/FiraCode-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Fira Code";
+      src: url("fonts/FiraCode-Medium.ttf") format("truetype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Fira Code";
+      src: url("fonts/FiraCode-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Fira Code";
+      src: url("fonts/FiraCode-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #f9f9f9;
+      --paper: #fbfaf7;
+      --ink: #1c1c1a;
+      --muted: #6c6b65;
+      --line: #d9d7cf;
+      --accent: #b84b2f;
+      --code: #fdfdfc;
+      --code-ink: var(--ink);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 300 14px/1.5 "Space Grotesk", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(249, 249, 249, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: clamp(76px, 12vw, 150px) 0 74px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    h1 {
+      font-size: clamp(30px, 3.8vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      font-weight: 300;
+      max-width: 900px;
+      margin: 22px 0 32px;
+    }
+
+    .subtitle {
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.4;
+      max-width: 760px;
+      letter-spacing: -.01em;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .hero-meta span {
+      display: block;
+    }
+
+    .hero-meta strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+
+    .section {
+      padding: 76px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(150px, .72fr) minmax(0, 2fr);
+      gap: clamp(32px, 7vw, 100px);
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 8px;
+    }
+
+    #research .section-label {
+      font-size: 10px;
+    }
+
+    #research p,
+    #research .note {
+      font-size: 13px;
+    }
+
+    #research .lead {
+      font-size: 15px;
+    }
+
+    .support-logo {
+      margin-top: 28px;
+    }
+
+    .support-logo img {
+      display: block;
+      width: 140px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    h2 {
+      font-size: clamp(17px, 1.7vw, 19px);
+      line-height: 1.2;
+      letter-spacing: -.025em;
+      font-weight: 300;
+      margin: 0 0 26px;
+    }
+
+    h3 {
+      font-size: 15px;
+      line-height: 1.4;
+      letter-spacing: -.01em;
+      margin: 0 0 10px;
+      font-weight: 300;
+    }
+
+    p {
+      margin: 0 0 18px;
+      max-width: 760px;
+    }
+
+    .lead {
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -.005em;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .research-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .research-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .num {
+      color: var(--accent);
+      font-size: 11px;
+      padding-top: 4px;
+    }
+
+    .research-item p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .entry {
+      padding: 26px 0 36px;
+      border-top: 1px solid var(--line);
+    }
+
+    .entry-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .entry p {
+      color: var(--muted);
+    }
+
+    .codebox {
+      margin: 22px 0 18px;
+      background: var(--code);
+      color: var(--code-ink);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .codehead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .copy {
+      border: 1px solid #8e8c84;
+      background: transparent;
+      color: inherit;
+      padding: 5px 9px;
+      border-radius: 2px;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .copy:hover {
+      background: #e8e6df;
+      color: var(--ink);
+    }
+
+    pre {
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+      font: 11px/1.7 "Fira Code", monospace;
+      tab-size: 4;
+    }
+
+    code,
+    pre,
+    .metadata {
+      font-family: "Fira Code", monospace;
+    }
+
+    .inline-code {
+      background: #e8e6df;
+      padding: 2px 5px;
+      font-size: .9em;
+    }
+
+    .note {
+      border-left: 2px solid var(--accent);
+      padding: 4px 0 4px 18px;
+      color: var(--muted);
+      margin: 24px 0;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .small-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .22);
+    }
+
+    .small-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 24px;
+      font-size: 13px;
+    }
+
+    .archive-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 24px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .archive-date {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    footer {
+      padding: 34px 0 44px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .wrap {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .topbar {
+        align-items: flex-start;
+        padding: 17px 0;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav {
+        gap: 12px 18px;
+      }
+
+      .section-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .columns {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .archive-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .hero-meta {
+        gap: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="#top">Performing Code / Luis Sanz</a>
+      <nav aria-label="Main navigation">
+        <a href="#research">Research</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#methods">Methods</a>
+        <a href="#archive">Archive</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Artistic research / 2026</div>
+        <h1>Performing Code</h1>
+        <p class="subtitle">Live Coding in Performative Contemporary Practices</p>
+        <p class="muted" style="max-width:650px;margin-top:22px">
+          An ongoing investigation into code as compositional material, a performative instrument,
+          and a means of exploring emergent sonic structures.
+        </p>
+        <div class="hero-meta">
+          <div><strong>Research period</strong><span>15 June — 17 August 2026</span></div>
+          <div><strong>Location</strong><span>Unsorted Space, Zürich</span></div>
+          <div><strong>Researcher</strong><span>Luis Sanz</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="wrap section-grid">
+        <div class="section-label">01 / Research</div>
+        <div>
+          <h2>Code as an instrument of thought and action.</h2>
+          <p class="lead">
+            Performing Code explores live coding as a compositional, performative, and computational practice.
+            It asks how algorithmic systems can shape musical expression, rhythmic organization, and the
+            experience of performing with computational processes in real time.
+          </p>
+          <p>
+            The research develops through practical experiments, source-code studies, listening, and performance.
+            Code is approached not only as a set of instructions for producing sound, but as material that can
+            be revised, exposed, and negotiated during a performance.
+          </p>
+          <p>
+            Rather than aiming for predetermined outcomes, the work examines how rules, constraints, and
+            relationships between processes can produce unexpected sonic behaviours and evolving structures.
+          </p>
+          <div class="note">
+            The archive combines working code, short explanations, research notes, and documentation.
+            It is intended to grow alongside the experiments rather than present a finished methodology.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap section-grid">
+        <div class="section-label">02 / Questions</div>
+        <div>
+          <h2>Areas of investigation</h2>
+          <div class="research-list">
+            <article class="research-item">
+              <div class="num">01</div>
+              <div>
+                <h3>Rhythm and relation</h3>
+                <p>How can algorithmic relationships generate rhythmic structures beyond fixed loops, regular pulses, or
+                  conventional meter?</p>
+              </div>
+            </article>
+            <article class="research-item">
+              <div class="num">02</div>
+              <div>
+                <h3>Generative systems</h3>
+                <p>How do operators, constraints, transformations, and feedback shape the behaviour of a musical system
+                  over time?</p>
+              </div>
+            </article>
+            <article class="research-item">
+              <div class="num">03</div>
+              <div>
+                <h3>Code in performance</h3>
+                <p>What changes when the code itself becomes visible, mutable material within the performance?</p>
+              </div>
+            </article>
+            <article class="research-item">
+              <div class="num">04</div>
+              <div>
+                <h3>Listening and emergence</h3>
+                <p>How can listening and bodily response guide the development of systems whose results are not fully
+                  predictable?</p>
+              </div>
+            </article>
+            <article class="research-item">
+              <div class="num">05</div>
+              <div>
+                <h3>Open tools and access</h3>
+                <p>How can open-source environments support adaptable, inspectable, and shareable approaches to creative
+                  computation?</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiments">
+      <div class="wrap section-grid">
+        <div class="section-label">03 / Experiments</div>
+        <div>
+          <h2>Code notes</h2>
+          <p class="muted">
+            Short, annotated examples can sit alongside longer research texts. The example below is a small
+            SuperCollider pattern sketch; replace it with a tested excerpt from your own work and explain what
+            you are listening for.
+          </p>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3>01 — Pattern as a changing relation</h3>
+              <span class="tag">SuperCollider / sketch</span>
+            </div>
+            <p>
+              A simple pattern provides a stable starting point. Changing the sequence, duration, or relationship
+              between pattern streams can shift the resulting rhythmic behaviour without changing the sound source.
+            </p>
+            <div class="codebox">
+              <div class="codehead"><span>SuperCollider</span><button class="copy" type="button">Copy code</button>
+              </div>
+              <pre><code>(
+Pbind(
+    \instrument, \default,
+    \degree, Pseq([0, 2, 5, 1, 4], inf),
+    \dur, Pseq([0.25, 0.5, 0.25, 0.75], inf),
+    \amp, 0.15
+).play;
+)</code></pre>
+            </div>
+            <p class="muted">Research note: What happens to perceived pulse when the pitch sequence and duration
+              sequence have different cycle lengths?</p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3>02 — Documenting an operator</h3>
+              <span class="tag">Template / replace with tested code</span>
+            </div>
+            <p>
+              Use this structure to document a custom operator, generator, or transformation. State the input,
+              the operation it performs, and what changed in the listening test.
+            </p>
+            <div class="codebox">
+              <div class="codehead"><span>Code example placeholder</span><button class="copy" type="button">Copy
+                  code</button></div>
+              <pre><code>// Name:
+// Input:
+// Operation:
+// Output:
+//
+// Example call:
+// [insert tested expression here]</code></pre>
+            </div>
+            <p class="muted">Keep examples executable where possible. Mark pseudocode and untested sketches clearly.</p>
+          </article>
+
+          <div class="note">
+            These examples are illustrative page content, not a complete performance setup. A real patch may
+            require a SynthDef, server boot, external classes, buffers, or other dependencies.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methods">
+      <div class="wrap section-grid">
+        <div class="section-label">04 / Methods</div>
+        <div>
+          <h2>From code to listening, and back.</h2>
+          <div class="columns">
+            <div class="small-card">
+              <h3>Build</h3>
+              <p>Develop small systems, operators, and patterns that can be inspected and recombined.</p>
+            </div>
+            <div class="small-card">
+              <h3>Listen</h3>
+              <p>Evaluate their sonic and rhythmic behaviour through repeated listening and performance.</p>
+            </div>
+            <div class="small-card">
+              <h3>Modify</h3>
+              <p>Adjust rules, parameters, and relationships in response to what the system produces.</p>
+            </div>
+            <div class="small-card">
+              <h3>Document</h3>
+              <p>Publish code, observations, limitations, and useful references so each experiment remains traceable.
+              </p>
+            </div>
+          </div>
+          <p style="margin-top:26px">
+            The method is iterative rather than linear. Listening can challenge the assumptions behind a system;
+            code can then be revised to make room for different forms of interaction, instability, and control.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="archive">
+      <div class="wrap section-grid">
+        <div class="section-label">05 / Archive</div>
+        <div>
+          <h2>Research log</h2>
+          <p class="muted">Add dated entries as the project develops. Link each entry to a separate page, code file,
+            audio example, or video when available.</p>
+          <div class="archive-row">
+            <div class="archive-date">Entry 001 / 2026</div>
+            <div>
+              <h3>Algorithmic operators and rhythmic relations</h3>
+              <p class="muted">Notes on transformations, cyclic structures, and the relationship between mathematical
+                operations and physical listening.</p>
+            </div>
+          </div>
+          <div class="archive-row">
+            <div class="archive-date">Entry 002 / 2026</div>
+            <div>
+              <h3>Building a performance setup</h3>
+              <p class="muted">Environment, routing, pattern organization, and practical decisions that shape a
+                live-coding session.</p>
+            </div>
+          </div>
+          <div class="archive-row">
+            <div class="archive-date">Entry 003 / To come</div>
+            <div>
+              <h3>Performance documentation</h3>
+              <p class="muted">Add recordings, excerpts, images, and reflections from a specific performance or
+                experiment.</p>
+            </div>
+          </div>
+          <p class="muted" style="font-size:12px;margin-top:24px">The entries above are starter placeholders. Replace
+            them with actual research notes as you publish them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap section-grid">
+        <div class="section-label">06 / Tools</div>
+        <div>
+          <h2>Working environments</h2>
+          <p>
+            <a href="https://supercollider.github.io/">SuperCollider</a> is the primary environment for this research,
+            used to develop and perform algorithmic music and investigate code as a compositional instrument. The work
+            explores real-time rhythmic structures, algorithmic processes, and the interaction between performer and
+            system.
+          </p>
+          <div class="links">
+            <a href="https://github.com/computernoise/performing-code">Project source repository ↗</a>
+            <a href="https://computernoise.github.io/">Project website ↗</a>
+            <a href="https://luissanz.ch/">Luis Sanz ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="support">
+      <div class="wrap section-grid">
+        <div class="section-label">07 / Research Support</div>
+        <div>
+          <h2>Research support</h2>
+          <p>
+            Performing Code — Live Coding in Performative Contemporary
+            Practices was supported by Pro Helvetia, the Swiss Arts Council.
+          </p>
+          <div class="support-logo">
+            <img src="./images/pro-helvetia.png" alt="Pro Helvetia — Swiss Arts Council" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap section-grid">
+        <div class="section-label">08 / About</div>
+        <div>
+          <h2>Luis Sanz</h2>
+          <p>
+            Luis Sanz is a Zürich-based multidisciplinary artist, researcher, and musician working across
+            computer music, experimental sonics, live coding, and audiovisual performance. His practice explores
+            self-developed computational systems, autonomous sonic behaviours, rhythm, perception, and cultural memory.
+          </p>
+          <p class="muted">Performing Code — Live Coding in Performative Contemporary Practices<br>
+            Unsorted Space, Zürich · 15 June – 17 August 2026</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© Luis Sanz · Performing Code</span>
+      <span>Artistic research / source code / documentation</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".copy").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const code = button.closest(".codebox").querySelector("code").innerText;
+        const original = button.textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          button.textContent = "Copied";
+          setTimeout(() => button.textContent = original, 1400);
+        } catch (error) {
+          button.textContent = "Select code to copy";
+          setTimeout(() => button.textContent = original, 1800);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
