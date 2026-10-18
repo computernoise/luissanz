@@ -449,6 +449,42 @@
       color: var(--accent);
     }
 
+    .archive-toggle {
+      margin-top: 24px;
+      font-size: 13px;
+    }
+
+    .archive-toggle summary {
+      width: fit-content;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .archive-toggle summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .archive-toggle summary:hover {
+      color: var(--accent);
+    }
+
+    .archive-indicator {
+      color: var(--accent);
+    }
+
+    .archive-toggle[open] .archive-indicator {
+      font-size: 0;
+    }
+
+    .archive-toggle[open] .archive-indicator::after {
+      content: "−";
+      font-size: 13px;
+    }
+
+    .archive-toggle .event-list {
+      margin-top: 14px;
+    }
+
     .project-list {
       border-top: 1px solid var(--line);
     }
@@ -801,7 +837,25 @@
               <span class="event-venue">MigrArt, Zürich</span>
             </div>
           </div>
-          <p class="links"><a href="archive.html">Archive of past performances and installations ↗</a></p>
+          <details class="archive-toggle">
+            <summary>archive <span class="archive-indicator" aria-hidden="true">+</span></summary>
+            <div class="event-list">
+              <div class="event-row">
+                <span class="event-date">29 / 07</span>
+                <span class="event-type">INSTALLATION</span>
+                <span>unsorted echoes</span>
+                <span class="event-venue">Echolot Festival, Luzern</span>
+                <span class="event-link" aria-label="External link to be added">↗</span>
+              </div>
+              <div class="event-row">
+                <span class="event-date">26 / 05</span>
+                <span class="event-type">PERFORM</span>
+                <span>Solo Laptop - live</span>
+                <span class="event-venue">Live Video Festival, Basel</span>
+                <span class="event-link" aria-label="External link to be added">↗</span>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
     </section>
