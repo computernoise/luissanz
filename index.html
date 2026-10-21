@@ -237,14 +237,17 @@
       margin-top: 0;
     }
 
+    .recent-archive-year {
+      display: none;
+    }
+
+    #recent .wrap:has(.archive-toggle[open]) .recent-archive-year {
+      display: block;
+    }
+
     #recent .archive-toggle {
       grid-column: 2;
       margin-top: 24px;
-    }
-
-    #recent .archive-year {
-      margin: 18px 0 0;
-      padding: 0;
     }
 
     .publication-subheading {
@@ -944,9 +947,9 @@
               <span class="event-venue">MigrArt, Zürich</span>
             </div>
         </div>
+        <h3 class="section-subheading recent-archive-year">2025</h3>
         <details class="archive-toggle">
           <summary>archive <span class="archive-indicator" aria-hidden="true">+</span></summary>
-          <h3 class="section-subheading archive-year">2025</h3>
           <div class="event-list">
             <div class="event-row">
               <span class="event-date">12 / 14</span>
