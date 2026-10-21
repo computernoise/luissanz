@@ -235,17 +235,29 @@
       margin-top: 0;
     }
 
-    .recent-archive-year {
-      display: none;
-    }
-
-    #recent .wrap:has(.archive-toggle[open]) .recent-archive-year {
-      display: block;
-    }
-
     #recent .archive-toggle {
-      grid-column: 2;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(150px, .72fr) minmax(0, 2fr);
+      column-gap: clamp(32px, 7vw, 100px);
+      row-gap: 24px;
       margin-top: 24px;
+    }
+
+    #recent .archive-toggle > summary {
+      grid-column: 2;
+    }
+
+    .archive-content {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(150px, .72fr) minmax(0, 2fr);
+      column-gap: clamp(32px, 7vw, 100px);
+    }
+
+    .recent-archive-year {
+      margin: 0;
+      align-self: start;
     }
 
     #research .section-label {
@@ -531,7 +543,7 @@
     }
 
     .archive-toggle .event-list {
-      margin-top: 14px;
+      margin-top: 0;
     }
 
     .project-list {
@@ -680,7 +692,15 @@
       }
 
       #recent .archive-toggle {
+        grid-template-columns: 1fr;
+      }
+
+      #recent .archive-toggle > summary {
         grid-column: 1;
+      }
+
+      .archive-content {
+        grid-template-columns: 1fr;
       }
 
       .section {
@@ -936,10 +956,11 @@
               <span class="event-venue">MigrArt, Zürich</span>
             </div>
         </div>
-        <h3 class="section-subheading recent-archive-year">2025</h3>
         <details class="archive-toggle">
           <summary>archive <span class="archive-indicator" aria-hidden="true">+</span></summary>
-          <div class="event-list">
+          <div class="archive-content">
+            <h3 class="section-subheading recent-archive-year">2025</h3>
+            <div class="event-list">
             <div class="event-row">
               <span class="event-date">12 / 14</span>
               <span class="event-type">PERFORM</span>
@@ -1135,6 +1156,7 @@
               <span>Solo Laptop - live</span>
               <span class="event-venue">Corsica Studios, London</span>
               <span class="event-link" aria-label="External link to be added">↗</span>
+            </div>
             </div>
           </div>
         </details>
