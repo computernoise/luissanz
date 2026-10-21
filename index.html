@@ -1336,32 +1336,25 @@
     </div>
   </footer>
   <script>
-    const nameTitle = document.querySelector("#name-title span");
+    const title = document.querySelector("#name-title");
+    const nameTitle = title.querySelector("span");
     const name = nameTitle.textContent;
-    const letters = [...name].filter(character => character !== " ").length;
     let scrambleTimer;
 
-    document.querySelector("#name-title").addEventListener("mouseenter", () => {
-      if (scrambleTimer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    title.addEventListener("pointerenter", () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      let frame = 0;
-      let revealed = 0;
       scrambleTimer = setInterval(() => {
-        revealed = Math.floor((frame / 12) * letters);
-        let visibleLetters = 0;
-        nameTitle.textContent = [...name].map(character => {
-          if (character === " ") return character;
-          const isRevealed = visibleLetters++ < revealed;
-          return isRevealed ? character : Math.random() < 0.5 ? "0" : "1";
-        }).join("");
+        nameTitle.textContent = [...name].map(character =>
+          character === " " ? character : Math.random() < 0.5 ? "0" : "1"
+        ).join("");
+      }, 90);
+    });
 
-        frame++;
-        if (frame > 12) {
-          clearInterval(scrambleTimer);
-          scrambleTimer = null;
-          nameTitle.textContent = name;
-        }
-      }, 45);
+    title.addEventListener("pointerleave", () => {
+      clearInterval(scrambleTimer);
+      scrambleTimer = null;
+      nameTitle.textContent = name;
     });
   </script>
 </body>
