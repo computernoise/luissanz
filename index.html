@@ -215,29 +215,48 @@
       padding-top: 8px;
     }
 
-    .section-subtitles {
-      display: grid;
-      gap: 8px;
-      margin-top: 16px;
+    .section-subheading {
+      margin: 20px 0 0;
+      padding-top: 18px;
       color: var(--muted);
       font-size: var(--description-size);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
-    .recent-subtitles {
-      margin-top: -5px;
+    .recent-layout,
+    .publication-layout {
+      row-gap: 0;
     }
 
     .recent-archive-year {
       display: none;
+      margin-top: 24px;
     }
 
     #recent .wrap:has(.archive-toggle[open]) .recent-archive-year {
       display: block;
     }
 
-    .publication-subtitles {
+    #recent .section-label,
+    #publications .section-label {
+      grid-column: 1 / -1;
+    }
+
+    #recent .section-subheading {
       margin-top: 0;
+    }
+
+    #recent .archive-toggle {
+      grid-column: 2;
+      margin-top: 24px;
+    }
+
+    .publication-subheading {
+      padding-top: 22px;
+    }
+
+    .publication-empty {
+      min-height: 1px;
     }
 
     #research .section-label {
@@ -526,14 +545,6 @@
       margin-top: 14px;
     }
 
-    .archive-year {
-      margin-top: 24px;
-      font-size: clamp(17px, 1.7vw, 19px);
-      line-height: 1.2;
-      letter-spacing: -.025em;
-      font-weight: 300;
-    }
-
     .project-list {
       border-top: 1px solid var(--line);
     }
@@ -675,6 +686,15 @@
         row-gap: 18px;
       }
 
+      .recent-layout,
+      .publication-layout {
+        row-gap: 0;
+      }
+
+      #recent .archive-toggle {
+        grid-column: 1;
+      }
+
       .section {
         padding: 54px 0;
       }
@@ -790,16 +810,10 @@
     </section>
 
     <section class="section" id="recent">
-      <div class="wrap section-grid">
-        <div>
-          <div class="section-label">Recent</div>
-          <div class="section-subtitles recent-subtitles">
-            <span>2026</span>
-            <span class="recent-archive-year">2025</span>
-          </div>
-        </div>
-        <div>
-          <div class="event-list">
+      <div class="wrap section-grid recent-layout">
+        <div class="section-label">Recent</div>
+        <h3 class="section-subheading">2026</h3>
+        <div class="event-list">
             <div class="event-row">
               <span class="event-date">11 / 14</span>
               <span class="event-type">PERFORM</span>
@@ -933,11 +947,11 @@
               <span>Solo Laptop - live</span>
               <span class="event-venue">MigrArt, Zürich</span>
             </div>
-          </div>
-          <details class="archive-toggle">
-            <summary>archive <span class="archive-indicator" aria-hidden="true">+</span></summary>
-            <h3 class="archive-year">2025</h3>
-            <div class="event-list">
+        </div>
+        <h3 class="section-subheading recent-archive-year">2025</h3>
+        <details class="archive-toggle">
+          <summary>archive <span class="archive-indicator" aria-hidden="true">+</span></summary>
+          <div class="event-list">
               <div class="event-row">
                 <span class="event-date">29 / 07</span>
                 <span class="event-type">INSTALLATION</span>
@@ -952,9 +966,8 @@
                 <span class="event-venue">Live Video Festival, Basel</span>
                 <span class="event-link" aria-label="External link to be added">↗</span>
               </div>
-            </div>
-          </details>
-        </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -1024,16 +1037,10 @@
     </section>
 
     <section class="section" id="publications">
-      <div class="wrap section-grid">
-        <div>
-          <div class="section-label">Publications</div>
-          <div class="section-subtitles publication-subtitles">
-            <span>Records</span>
-            <span>Texts</span>
-          </div>
-        </div>
-        <div>
-          <div class="text-list">
+      <div class="wrap section-grid publication-layout">
+        <div class="section-label">Publications</div>
+        <h3 class="section-subheading publication-subheading">Records</h3>
+        <div class="text-list">
             <article class="text-item record-item">
               <a class="record-cover" href="https://loleditions.bandcamp.com/album/loltrax002" target="_blank"
                 rel="noopener noreferrer" aria-label="Listen to Various – LOLTRAX002 on Bandcamp">
@@ -1062,8 +1069,9 @@
                   by over 30 artists from Switzerland’s experimental music scene.</p>
               </div>
             </article>
-          </div>
         </div>
+        <h3 class="section-subheading publication-subheading">Texts</h3>
+        <div class="publication-empty" aria-hidden="true"></div>
       </div>
     </section>
 
