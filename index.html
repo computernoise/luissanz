@@ -248,16 +248,8 @@
       grid-column: 2;
     }
 
-    .archive-content {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: minmax(150px, .72fr) minmax(0, 2fr);
-      column-gap: clamp(32px, 7vw, 100px);
-    }
-
     .recent-archive-year {
       margin: 0;
-      align-self: start;
     }
 
     #research .section-label {
@@ -699,10 +691,6 @@
         grid-column: 1;
       }
 
-      .archive-content {
-        grid-template-columns: 1fr;
-      }
-
       .section {
         padding: 54px 0;
       }
@@ -958,9 +946,8 @@
         </div>
         <details class="archive-toggle">
           <summary>archive <span class="archive-indicator" aria-hidden="true">+</span></summary>
-          <div class="archive-content">
-            <h3 class="section-subheading recent-archive-year">2025</h3>
-            <div class="event-list">
+          <h3 class="section-subheading recent-archive-year">2025</h3>
+          <div class="event-list">
             <div class="event-row">
               <span class="event-date">12 / 14</span>
               <span class="event-type">PERFORM</span>
@@ -1156,7 +1143,6 @@
               <span>Solo Laptop - live</span>
               <span class="event-venue">Corsica Studios, London</span>
               <span class="event-link" aria-label="External link to be added">↗</span>
-            </div>
             </div>
           </div>
         </details>
