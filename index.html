@@ -223,13 +223,11 @@
       line-height: 1.5;
     }
 
-    .recent-layout,
-    .publication-layout {
+    .recent-layout {
       row-gap: 0;
     }
 
-    #recent .section-label,
-    #publications .section-label {
+    #recent .section-label {
       grid-column: 1 / -1;
     }
 
@@ -248,14 +246,6 @@
     #recent .archive-toggle {
       grid-column: 2;
       margin-top: 24px;
-    }
-
-    .publication-subheading {
-      padding-top: 22px;
-    }
-
-    .publication-empty {
-      min-height: 1px;
     }
 
     #research .section-label {
@@ -685,8 +675,7 @@
         row-gap: 18px;
       }
 
-      .recent-layout,
-      .publication-layout {
+      .recent-layout {
         row-gap: 0;
       }
 
@@ -1218,10 +1207,10 @@
     </section>
 
     <section class="section" id="publications">
-      <div class="wrap section-grid publication-layout">
+      <div class="wrap section-grid">
         <div class="section-label">Publications</div>
-        <h3 class="section-subheading publication-subheading">Records</h3>
-        <div class="text-list">
+        <div>
+          <div class="text-list">
             <article class="text-item record-item">
               <a class="record-cover" href="https://loleditions.bandcamp.com/album/loltrax002" target="_blank"
                 rel="noopener noreferrer" aria-label="Listen to Various – LOLTRAX002 on Bandcamp">
@@ -1250,9 +1239,8 @@
                   by over 30 artists from Switzerland’s experimental music scene.</p>
               </div>
             </article>
+          </div>
         </div>
-        <h3 class="section-subheading publication-subheading">Texts</h3>
-        <div class="publication-empty" aria-hidden="true"></div>
       </div>
     </section>
 
