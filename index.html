@@ -237,24 +237,27 @@
 
     #recent .archive-toggle {
       grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: minmax(150px, .72fr) minmax(0, 2fr);
-      column-gap: clamp(32px, 7vw, 100px);
-      row-gap: 24px;
       margin-top: 24px;
     }
 
     #recent .archive-toggle>summary {
-      grid-column: 2;
+      margin-left: calc(26.47% + clamp(23.5px, 5.15vw, 73.5px));
     }
 
-    #recent .archive-toggle>.recent-archive-year,
-    #recent .archive-toggle>.event-list {
-      grid-column: 2;
+    #recent .archive-content {
+      display: grid;
+      grid-template-columns: minmax(150px, .72fr) minmax(0, 2fr);
+      column-gap: clamp(32px, 7vw, 100px);
+      margin-top: 8px;
     }
 
     .recent-archive-year {
+      grid-column: 1 / 2;
       margin: 0;
+    }
+
+    #recent .archive-content>.event-list {
+      grid-column: 2 / 3;
     }
 
     #research .section-label {
@@ -689,16 +692,19 @@
       }
 
       #recent .archive-toggle {
-        grid-template-columns: 1fr;
+        grid-column: 1;
       }
 
       #recent .archive-toggle>summary {
-        grid-column: 1;
+        margin-left: 0;
       }
 
-      #recent .archive-toggle>.recent-archive-year,
-      #recent .archive-toggle>.event-list {
-        grid-column: 1;
+      #recent .archive-content {
+        grid-template-columns: 1fr;
+      }
+
+      #recent .archive-content>.event-list {
+        grid-column: 1 / 2;
       }
 
       .section {
@@ -956,8 +962,9 @@
         </div>
         <details class="archive-toggle">
           <summary>archive <span class="archive-indicator" aria-hidden="true">+</span></summary>
-          <h3 class="section-subheading recent-archive-year">2025</h3>
-          <div class="event-list">
+          <div class="archive-content">
+            <h3 class="section-subheading recent-archive-year">2025</h3>
+            <div class="event-list">
             <div class="event-row">
               <span class="event-date">12 / 14</span>
               <span class="event-type">PERFORM</span>
@@ -1153,6 +1160,7 @@
               <span>Solo Laptop - live</span>
               <span class="event-venue">Corsica Studios, London</span>
               <span class="event-link" aria-label="External link to be added">↗</span>
+            </div>
             </div>
           </div>
         </details>
