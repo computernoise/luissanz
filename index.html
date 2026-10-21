@@ -1353,7 +1353,7 @@
     const startScramble = () => {
       if (scrambleTimer) return;
 
-      const interval = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 450 : 90;
+      const interval = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 90 : 50;
       scrambleTimer = setInterval(() => {
         nameTitle.textContent = [...name].map(character =>
           character === " " ? character : Math.random() < 0.5 ? "0" : "1"
