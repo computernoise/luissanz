@@ -13,6 +13,7 @@
   --line: #d9d7cf;
   --accent: #b84b2f;
   --max: 1180px;
+  --description-size: 12px;
 }
 
 * {
@@ -120,7 +121,7 @@ h1 {
 }
 
 .subtitle {
-  font-size: clamp(15px, 1.5vw, 17px);
+  font-size: var(--description-size);
   line-height: 1.5;
   max-width: 760px;
   letter-spacing: -.01em;
@@ -160,6 +161,7 @@ h3 {
 p {
   margin: 0 0 18px;
   max-width: 760px;
+  font-size: var(--description-size);
 }
 
 .muted,
@@ -179,7 +181,7 @@ p {
   align-items: baseline;
   padding: 17px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 12px;
+  font-size: var(--description-size);
 }
 
 .event-type,
@@ -239,7 +241,7 @@ p {
 
 .member p {
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--description-size);
   margin: 0;
 }
 
@@ -267,6 +269,7 @@ footer {
 
 .footer-columns p {
   margin: 0;
+  font-size: inherit;
 }
 
 .footer-inner {

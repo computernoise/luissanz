@@ -66,6 +66,7 @@
       --code: #fdfdfc;
       --code-ink: var(--ink);
       --max: 1180px;
+      --description-size: 12px;
     }
 
     * {
@@ -167,7 +168,7 @@
     }
 
     .subtitle {
-      font-size: clamp(15px, 1.5vw, 17px);
+      font-size: var(--description-size);
       line-height: 1.4;
       max-width: 760px;
       letter-spacing: -.01em;
@@ -220,11 +221,11 @@
 
     #research p,
     #research .note {
-      font-size: 13px;
+      font-size: var(--description-size);
     }
 
     #research .lead {
-      font-size: 15px;
+      font-size: var(--description-size);
     }
 
     .support-logo {
@@ -257,10 +258,11 @@
     p {
       margin: 0 0 18px;
       max-width: 760px;
+      font-size: var(--description-size);
     }
 
     .lead {
-      font-size: 16px;
+      font-size: var(--description-size);
       line-height: 1.5;
       letter-spacing: -.005em;
     }
@@ -392,7 +394,7 @@
     }
 
     .small-card p {
-      font-size: 13px;
+      font-size: var(--description-size);
       color: var(--muted);
       margin: 0;
     }
@@ -403,11 +405,12 @@
       gap: 24px;
       padding: 18px 0;
       border-top: 1px solid var(--line);
+      font-size: var(--description-size);
     }
 
     .archive-date {
       color: var(--muted);
-      font-size: 11px;
+      font-size: inherit;
     }
 
     .event-list {
@@ -421,7 +424,7 @@
       align-items: baseline;
       padding: 17px 0;
       border-bottom: 1px solid var(--line);
-      font-size: 12px;
+      font-size: var(--description-size);
     }
 
     .event-date,
@@ -504,7 +507,7 @@
 
     .project-row p {
       color: var(--muted);
-      font-size: 13px;
+      font-size: var(--description-size);
       margin: 0;
     }
 
@@ -561,13 +564,17 @@
     .text-item p {
       color: var(--muted);
       margin: 0;
-      font-size: 13px;
+      font-size: var(--description-size);
     }
 
     footer {
       padding: 34px 0 44px;
       font-size: 11px;
       color: var(--muted);
+    }
+
+    footer p {
+      font-size: inherit;
     }
 
     .footer-inner {
