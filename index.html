@@ -228,6 +228,14 @@
       margin-top: -5px;
     }
 
+    .recent-archive-year {
+      display: none;
+    }
+
+    #recent .wrap:has(.archive-toggle[open]) .recent-archive-year {
+      display: block;
+    }
+
     .publication-subtitles {
       margin-top: 0;
     }
@@ -787,7 +795,7 @@
           <div class="section-label">Recent</div>
           <div class="section-subtitles recent-subtitles">
             <span>2026</span>
-            <span>2025</span>
+            <span class="recent-archive-year">2025</span>
           </div>
         </div>
         <div>
