@@ -167,6 +167,12 @@
       margin: 22px 0 32px;
     }
 
+    #name-title span {
+      display: inline-block;
+      width: 5.5em;
+      white-space: nowrap;
+    }
+
     .subtitle {
       font-size: var(--description-size);
       line-height: 1.4;
@@ -798,7 +804,7 @@
     <section class="hero" id="bio">
       <div class="wrap">
         <div class="eyebrow">Artist / Researcher / Musician</div>
-        <h1>Luis Sanz</h1>
+        <h1 id="name-title" aria-label="Luis Sanz"><span aria-hidden="true">luis sanz</span></h1>
         <p class="subtitle">
           Luis Sanz is a Zürich-based multidisciplinary artist, researcher, and musician working across
           computer music, experimental sonics, live coding, and audiovisual performance. His practice
@@ -1329,6 +1335,35 @@
       </div>
     </div>
   </footer>
+  <script>
+    const nameTitle = document.querySelector("#name-title span");
+    const name = nameTitle.textContent;
+    const letters = [...name].filter(character => character !== " ").length;
+    let scrambleTimer;
+
+    document.querySelector("#name-title").addEventListener("mouseenter", () => {
+      if (scrambleTimer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      let frame = 0;
+      let revealed = 0;
+      scrambleTimer = setInterval(() => {
+        revealed = Math.floor((frame / 12) * letters);
+        let visibleLetters = 0;
+        nameTitle.textContent = [...name].map(character => {
+          if (character === " ") return character;
+          const isRevealed = visibleLetters++ < revealed;
+          return isRevealed ? character : Math.random() < 0.5 ? "0" : "1";
+        }).join("");
+
+        frame++;
+        if (frame > 12) {
+          clearInterval(scrambleTimer);
+          scrambleTimer = null;
+          nameTitle.textContent = name;
+        }
+      }, 45);
+    });
+  </script>
 </body>
 
 </html>
