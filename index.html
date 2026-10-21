@@ -813,7 +813,7 @@
     <section class="hero" id="bio">
       <div class="wrap">
         <div class="eyebrow">Artist / Researcher / Musician</div>
-        <h1 id="name-title" aria-label="Luis Sanz"><span aria-hidden="true">luis sanz</span></h1>
+        <h1 id="name-title" aria-label="Luis Sanz" tabindex="0"><span aria-hidden="true">luis sanz</span></h1>
         <p class="subtitle">
           Luis Sanz is a Zürich-based multidisciplinary artist, researcher, and musician working across
           computer music, experimental sonics, live coding, and audiovisual performance. His practice
@@ -1348,22 +1348,38 @@
     const title = document.querySelector("#name-title");
     const nameTitle = title.querySelector("span");
     const name = nameTitle.textContent;
+    const binaryName = [...name].map(character =>
+      character === " " ? character : Math.random() < 0.5 ? "0" : "1"
+    ).join("");
     let scrambleTimer;
 
-    title.addEventListener("pointerenter", () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const startScramble = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        nameTitle.textContent = binaryName;
+        return;
+      }
+      if (scrambleTimer) return;
 
       scrambleTimer = setInterval(() => {
         nameTitle.textContent = [...name].map(character =>
           character === " " ? character : Math.random() < 0.5 ? "0" : "1"
         ).join("");
       }, 90);
-    });
+    };
 
-    title.addEventListener("pointerleave", () => {
+    const stopScramble = () => {
       clearInterval(scrambleTimer);
       scrambleTimer = null;
       nameTitle.textContent = name;
+    };
+
+    title.addEventListener("pointerenter", startScramble);
+    title.addEventListener("pointerleave", () => {
+      if (document.activeElement !== title) stopScramble();
+    });
+    title.addEventListener("focus", startScramble);
+    title.addEventListener("blur", () => {
+      if (!title.matches(":hover")) stopScramble();
     });
   </script>
 </body>
