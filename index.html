@@ -417,8 +417,24 @@
       font-size: var(--description-size);
     }
 
+    .profile-subheading {
+      margin: 0;
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: var(--description-size);
+      line-height: 1.5;
+    }
+
+    .profile-layout {
+      row-gap: 0;
+    }
+
+    .profile-subheading.education {
+      margin-top: 20px;
+    }
+
     .profile-entries {
-      margin-top: 34px;
+      margin: 0;
     }
 
     .archive-date {
@@ -636,6 +652,10 @@
       .section-grid {
         grid-template-columns: 1fr;
         gap: 18px;
+      }
+
+      .profile-layout {
+        row-gap: 18px;
       }
 
       .section {
@@ -1033,15 +1053,9 @@
     </section>
 
     <section class="section" id="profile">
-      <div class="wrap section-grid">
-        <div>
-          <div class="section-label">Profile</div>
-          <div class="section-subtitles">
-            <span>Positions</span>
-            <span>Education</span>
-          </div>
-        </div>
-        <div>
+      <div class="wrap section-grid profile-layout">
+        <div class="section-label">Profile</div>
+        <div class="profile-intro">
           <p>
             Luis Sanz is a Zürich-based multidisciplinary artist, researcher, and musician working across
             computer music, experimental sonics, live coding, and audiovisual performance. His practice explores
@@ -1052,29 +1066,31 @@
             been presented at Berlin Atonal, CTM Festival, Localhost Festival, Sonorities, A Bunch of Noise, and
             Proyecto AMIL, alongside touring and artistic research across Asia.
           </p>
-          <div class="profile-entries">
-            <div class="archive-row">
-              <span class="archive-date">2025 —</span>
-              <span>Researcher and Curator, unsorted, Creative Coding Space, Zurich</span>
-            </div>
-            <div class="archive-row">
-              <span class="archive-date">2025 –</span>
-              <span>Founder and Curator, Farmhouse, Experimental Music Network, Zürich</span>
-            </div>
-            <div class="archive-row">
-              <span class="archive-date">2022 – 2025</span>
-              <span>Founder and Curator, fake[dac~], Algorithmic Art Platform, London</span>
-            </div>
+        </div>
+        <h3 class="profile-subheading">Positions</h3>
+        <div class="profile-entries">
+          <div class="archive-row">
+            <span class="archive-date">2025 —</span>
+            <span>Researcher and Curator, unsorted, Creative Coding Space, Zurich</span>
           </div>
-          <div class="profile-entries">
-            <div class="archive-row">
-              <span class="archive-date">2019 — 2021</span>
-              <span>MA Contemporary Arts Practice, University of the Arts, Bern</span>
-            </div>
-            <div class="archive-row">
-              <span class="archive-date">2016 — 2019</span>
-              <span>BA Fine Arts, University of the Arts, Bern</span>
-            </div>
+          <div class="archive-row">
+            <span class="archive-date">2025 –</span>
+            <span>Founder and Curator, Farmhouse, Experimental Music Network, Zürich</span>
+          </div>
+          <div class="archive-row">
+            <span class="archive-date">2022 – 2025</span>
+            <span>Founder and Curator, fake[dac~], Algorithmic Art Platform, London</span>
+          </div>
+        </div>
+        <h3 class="profile-subheading education">Education</h3>
+        <div class="profile-entries">
+          <div class="archive-row">
+            <span class="archive-date">2019 — 2021</span>
+            <span>MA Contemporary Arts Practice, University of the Arts, Bern</span>
+          </div>
+          <div class="archive-row">
+            <span class="archive-date">2016 — 2019</span>
+            <span>BA Fine Arts, University of the Arts, Bern</span>
           </div>
         </div>
       </div>
