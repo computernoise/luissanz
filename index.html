@@ -1348,23 +1348,17 @@
     const title = document.querySelector("#name-title");
     const nameTitle = title.querySelector("span");
     const name = nameTitle.textContent;
-    const binaryName = [...name].map(character =>
-      character === " " ? character : Math.random() < 0.5 ? "0" : "1"
-    ).join("");
     let scrambleTimer;
 
     const startScramble = () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        nameTitle.textContent = binaryName;
-        return;
-      }
       if (scrambleTimer) return;
 
+      const interval = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 450 : 90;
       scrambleTimer = setInterval(() => {
         nameTitle.textContent = [...name].map(character =>
           character === " " ? character : Math.random() < 0.5 ? "0" : "1"
         ).join("");
-      }, 90);
+      }, interval);
     };
 
     const stopScramble = () => {
